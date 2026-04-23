@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-  <title>Resultados</title>
+  <meta charset="UTF-8">
+  <title>Resultados da Busca</title>
 </head>
 <body>
 
-<h1>Resultados da pesquisa</h1>
+<h1>Resultados</h1>
 <div id="results"></div>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
-  const query = params.get("search_query");
+const params = new URLSearchParams(window.location.search);
+const query = params.get("search_query");
 
-  const videos = [
-    {
-      title: "UNBOXING DO MEU PS5 em 2021",
-      duration: "2:29:19",
-      thumbnail: "thumb.jpg"
-    }
-  ];
+const videos = [
+  {
+    title: "UNBOXING DO MEU PS5 em 2021",
+    time: "2:29:19",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg"
+  }
+];
 
-  const container = document.getElementById("results");
+const resultsDiv = document.getElementById("results");
 
-  videos.forEach(video => {
-    if (video.title.toLowerCase().includes(query.toLowerCase())) {
-      container.innerHTML += `
-        <div>
-          <img src="${video.thumbnail}" width="200"><br>
-          <b>${video.title}</b><br>
-          ${video.duration}
-        </div>
-        <hr>
-      `;
-    }
-  });
+videos.forEach(video => {
+  if (video.title.toLowerCase().includes(query.toLowerCase())) {
+    resultsDiv.innerHTML += `
+      <div>
+        <img src="${video.thumbnail}" width="200">
+        <h3>${video.title}</h3>
+        <p>${video.time}</p>
+      </div>
+    `;
+  }
+});
 </script>
 
 </body>
